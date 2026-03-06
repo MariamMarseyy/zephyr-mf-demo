@@ -5,7 +5,7 @@ import federation from '@originjs/vite-plugin-federation';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const remoteUrl = env.VITE_REMOTE_APP_URL || 'http://localhost:5173';
+  const remoteUrl = 'https://msargsyan925-gmail-com-1-remote-app-zephyr-mf-dem-007d76a97-ze.zephyrcloud.app';
 
   return {
     plugins: [
