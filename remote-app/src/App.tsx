@@ -1,12 +1,7 @@
 import type { ReactElement } from 'react';
 
-import Button from './Button';
+import Button from './components/Button';
 
-const App = (): ReactElement => (
-  <div>
-    <h1>Remote Application</h1>
-    <Button />
-  </div>
-);
+const App = (): ReactElement => <Button />;
 
 export default App;

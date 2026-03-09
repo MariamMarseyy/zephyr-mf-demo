@@ -32,13 +32,15 @@ cd remote-app && npm run build
 cd host-app && npm run build
 ```
 
-For the host build, set `VITE_REMOTE_APP_URL` to the deployed remote origin (no trailing slash). On Zephyr, add this as a build env var for the host app.
+For the host build (local or deploy), set `VITE_REMOTE_APP_URL` to the remote origin (no trailing slash). Use `.env.production` or export it before `npm run build`.
 
 ## Deploy (Zephyr Cloud)
 
-1. Deploy **remote-app**: root `remote-app`, build `npm run build`, output `dist`. Copy the deployed URL.
-2. Deploy **host-app**: root `host-app`, build `npm run build`, output `dist`. Set `VITE_REMOTE_APP_URL` to the remote URL from step 1.
-3. Open the host URL; the button is loaded from the remote.
+Deployment uses the Zephyr plugin: when you run `npm run build`, the plugin uploads the build to Zephyr and prints the deployed URL. Git remote origin must be set (Zephyr maps your repo to the deployment).
+
+1. **Remote:** From the repo root, `cd remote-app && npm run build`. If prompted, log in via the browser. Copy the deployed URL from the build output.
+2. **Host:** Set `VITE_REMOTE_APP_URL` to that URL (no trailing slash), then `cd host-app && npm run build`. Copy the host URL from the output.
+3. Open the host URL in the browser; the button is loaded from the remote.
 
 ## How it works
 

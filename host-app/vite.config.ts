@@ -2,10 +2,11 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import federation from '@originjs/vite-plugin-federation';
+import { withZephyr } from 'vite-plugin-zephyr';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const remoteUrl = 'https://msargsyan925-gmail-com-1-remote-app-zephyr-mf-dem-007d76a97-ze.zephyrcloud.app';
+  const remoteUrl = env.VITE_REMOTE_APP_URL || 'http://localhost:5173';
 
   return {
     plugins: [
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }) => {
         },
         shared: ['react', 'react-dom'],
       }),
+      withZephyr(),
     ],
     server: {
       port: 5174,

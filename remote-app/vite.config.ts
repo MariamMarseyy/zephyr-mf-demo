@@ -1,3 +1,4 @@
+import type { UserConfig } from 'vite';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import federation from '@originjs/vite-plugin-federation';
@@ -9,7 +10,8 @@ export default defineConfig({
       name: 'remote_app',
       filename: 'remoteEntry.js',
       exposes: {
-        './Button': './src/Button/index.tsx',
+        './components': './src/components/index.ts',
+        './Button': './src/components/Button/index.tsx',
       },
       shared: ['react', 'react-dom'],
     }),
@@ -20,4 +22,4 @@ export default defineConfig({
   build: {
     target: 'esnext',
   },
-});
+} as UserConfig);
